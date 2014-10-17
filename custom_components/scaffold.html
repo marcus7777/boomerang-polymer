@@ -151,6 +151,7 @@ of the scaffold.
         this.item.tag = this.item.getAttribute('tag');
         var url = this.item.getAttribute('url');
         this.$.frame.contentWindow.location.replace(url);
+        this.$.frame.contentWindow.config = window.config;
         window.document.title = this.label + " - " + this.item.getAttribute('label');
         window.location.hash = this.item.tag;
         if (this.narrow) {
