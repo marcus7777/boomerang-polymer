@@ -1,0 +1,25 @@
+<polymer-element name="gplus-image" attributes="userid size apikey">
+
+	<template>
+	  <core-ajax id="ajax"
+      auto
+      url="https://www.googleapis.com/plus/v1/people/{{userid}}?fields=image&key={{apikey}}"
+      on-core-response="{{gplusLoaded}}"
+      handleAs="json">
+    </core-ajax>
+		<a href="https://plus.google.com/{{userid}}" target="_new"><img src="{{imgSrc}}"/></a>
+	</template>
+
+	<script>
+		Polymer('gplus-image', {
+			size: '120',
+			imgSrc : '',
+			gplusLoaded: function(){
+			  this.person = this.$.ajax.response;
+			  this.imgSrc = this.person.image.url;
+			}
+
+		});
+	</script>
+
+</polymer-element>

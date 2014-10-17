@@ -1,6 +1,7 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="../components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../components/paper-shadow/paper-shadow.html">
+<link rel="import" href="gplus-image.html">
 
 <polymer-element name="organizer-card" attributes="gplusid">
   <template>
@@ -33,10 +34,11 @@
 
       <paper-shadow z="3">
         <div class="card-header" layout horizontal center wrap>
-          <a href="https://plus.google.com/+{{gplusid}}" target="_new"><content select="img"></content></a>
+          <a href="https://plus.google.com/{{gplusid}}" target="_new"><content select="img"></content></a>
           <content select="h2"></content>
         </div>
         <content></content>
+        <gplus-image userid={{gplusid}} size="50" apikey=""></gplus-image>
       </paper-shadow>
 
   </template>
