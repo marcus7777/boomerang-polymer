@@ -1,19 +1,19 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="../components/core-ajax/core-ajax.html">
-<!-- 
-ADAPTED FROM 
+<!--
+ADAPTED FROM
   @homepage http://www.polymer-project.org/docs/start/tutorial.html
 
   Consume local organizers.json
 -->
 
 <!--
-  
-  @attribute posts 
+
+  @attribute organizers
   @type Array
   @default []
 -->
-<polymer-element name="post-service" attributes="posts">
+<polymer-element name="organizer-service" attributes="organizers">
   <template>
     <style>
     :host {
@@ -23,18 +23,18 @@ ADAPTED FROM
     <core-ajax id="ajax"
       auto
       url="../api/organizers.json"
-      on-core-response="{{postsLoaded}}"
+      on-core-response="{{organizersLoaded}}"
       handleAs="json">
     </core-ajax>
   </template>
   <script>
-  Polymer('post-service', {
+  Polymer('organizer-service', {
     created: function() {
-      this.posts = [];
+      this.organizers = [];
     },
-    postsLoaded: function() {
+    organizersLoaded: function() {
       // Make a copy of the loaded data
-      this.posts = this.$.ajax.response.slice(0);
+      this.organizers = this.$.ajax.response.slice(0);
     }
   });
   </script>
