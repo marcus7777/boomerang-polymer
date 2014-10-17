@@ -1,9 +1,9 @@
-<polymer-element name="gplus-image" attributes="userid size apikey">
+<polymer-element name="gplus-image" attributes="userid size apiKey">
 
 	<template>
 	  <core-ajax id="ajax"
       auto
-      url="https://www.googleapis.com/plus/v1/people/{{userid}}?fields=image&key={{apikey}}"
+      url="https://www.googleapis.com/plus/v1/people/{{userid}}?fields=image&key={{apiKey}}"
       on-core-response="{{gplusLoaded}}"
       handleAs="json">
     </core-ajax>

@@ -3,7 +3,7 @@
 <link rel="import" href="../components/paper-shadow/paper-shadow.html">
 <link rel="import" href="gplus-image.html">
 
-<polymer-element name="organizer-card" attributes="gplusid">
+<polymer-element name="organizer-card" attributes="gplusid apiKey">
   <template>
     <style>
     :host {
@@ -34,16 +34,17 @@
 
       <paper-shadow z="3">
         <div class="card-header" layout horizontal center wrap>
-          <a href="https://plus.google.com/{{gplusid}}" target="_new"><content select="img"></content></a>
+          <gplus-image userid={{gplusid}} size="50" apiKey="{{apiKey}}"></gplus-image>
           <content select="h2"></content>
         </div>
         <content></content>
-        <gplus-image userid={{gplusid}} size="50" apikey=""></gplus-image>
+
       </paper-shadow>
 
   </template>
   <script>
-  Polymer({
+  Polymer('organizer-card', {
+    apiKey : parent.config.apiKey
   });
   </script>
 </polymer-element>
