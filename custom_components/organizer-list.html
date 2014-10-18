@@ -2,7 +2,7 @@
 <link rel="import" href="organizer-service.html">
 <link rel="import" href="organizer-card.html">
 
-<polymer-element name="organizer-list" attributes="show">
+<polymer-element name="organizer-list" attributes="show apiKey">
   <template>
     <style>
     :host {
@@ -19,7 +19,7 @@
 
     <div horizontal  layout wrap>
       <template repeat="{{organizer in organizers}}">
-        <organizer-card gplusid="{{organizer.gplusid}}">
+        <organizer-card gplusid="{{organizer.gplusid}}" apiKey={{apiKey}}>
           <h2>{{organizer.username}}</h2>
           <p>{{organizer.text}}</p>
         </organizer-card>
@@ -29,6 +29,7 @@
 
   <script>
   Polymer({
+    apiKey : parent.config.apiKey
   });
   </script>
 </polymer-element>

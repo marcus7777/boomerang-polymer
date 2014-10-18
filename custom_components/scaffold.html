@@ -43,6 +43,7 @@ of the scaffold.
 <link rel="import" href="../components/core-icons/core-icons.html">
 <link rel="import" href="../components/core-icons/social-icons.html">
 
+<link rel="import" href="app-globals.html">
 
 <!--PAPER-->
 <link rel="import" href="../components/paper-fab/paper-fab.html">
@@ -50,11 +51,11 @@ of the scaffold.
 
 
 
-<polymer-element name="sampler-scaffold" attributes="label responsiveWidth gplusid">
+<polymer-element name="sampler-scaffold" attributes="label responsiveWidth chapterid">
 <template>
 
   <link rel="stylesheet" href="scaffold.css">
-
+  <app-globals id="globals"></app-globals>
   <core-drawer-panel id="drawerPanel" narrow="{{narrow}}" drawerWidth="200px" responsiveWidth="{{responsiveWidth}}">
 
     <core-header-panel id="mainHeaderPanel" main mode="{{narrow ? 'waterfall' : 'cover'}}" shadow>
@@ -119,6 +120,8 @@ of the scaffold.
      */
 
     ready: function() {
+      this.chapterid=this.$.globals.values.chapterid;
+      this.label = this.$.globals.values.label;
       this.boundResizeFrame = this.resizeFrame.bind(this);
       window.addEventListener('resize', this.updateFrameHeight.bind(this));
       window.addEventListener('hashchange', this.parseLocationHash.bind(this));
@@ -150,8 +153,8 @@ of the scaffold.
         }
         this.item.tag = this.item.getAttribute('tag');
         var url = this.item.getAttribute('url');
-        this.$.frame.contentWindow.location.replace(url);
         this.$.frame.contentWindow.config = window.config;
+        this.$.frame.contentWindow.location.replace(url);
         window.document.title = this.label + " - " + this.item.getAttribute('label');
         window.location.hash = this.item.tag;
         if (this.narrow) {
