@@ -1,11 +1,8 @@
-gdgtc-site-polymer
+boomerang-polymer
 ==================
 
-GDG Twin Cities site, now with more cowbell!... er Polymer!
-
-Demo site is at http://dev.gdgtc.com/gdgtc-site-polymer
-
-This is a modification of the [Polymer Paper Elements Demo](https://www.polymer-project.org/components/paper-elements/demo.html)
+Based on the GDG Twin Cities site (http://dev.gdgtc.com/gdgtc-site-polymer), this page is a polymer implementation of 
+boomerang, the templates for GDG chapters.
 
 ## To install on your site
 - clone this repo into a folder
