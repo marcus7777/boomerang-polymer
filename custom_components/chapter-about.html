@@ -1,0 +1,77 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+
+<polymer-element name="chapter-about" attributes="chapterId apiKey yearFounded">
+  <template>
+    	  <core-ajax id="ajax"
+      auto
+      url="https://www.googleapis.com/plus/v1/people/{{chapterId}}?key={{apiKey}}"
+      on-core-response="{{gplusLoaded}}"
+      handleAs="json">
+    </core-ajax>
+
+   <core-animation id="fadeout" duration="500">
+  <core-animation-keyframe>
+    <core-animation-prop name="opacity" value="1"></core-animation-prop>
+  </core-animation-keyframe>
+  <core-animation-keyframe>
+    <core-animation-prop name="opacity" value="0"></core-animation-prop>
+  </core-animation-keyframe>
+  <core-animation-keyframe>
+    <core-animation-prop name="display" value="none"></core-animation-prop>
+  </core-animation-keyframe>
+</core-animation>
+
+
+            <!-- Main hero unit for a primary marketing message or call to action -->
+            <div class="hero-unit">
+                <h1>GDGs are a world wide phenom!</h1>
+                <p>{{tagline}}</p>
+            </div>
+
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="span4">
+                    <h2>Learning</h2>
+                    <p>Members of the {{name}} community are always learning, engaging themselves in new tech and improving their skills with old.  We have some members who have been coming to the meeetup since it began in {{yearFounded}} and there are always new faces at each event. </p>
+                </div>
+                <div class="span4">
+                    <h2>Sharing</h2>
+                    <p>Members are excited to share what they are learning.  If you have something you are excited about that falls under the umbrella of Google technologies, please get in touch with one of us and we'd love to hear from you.</p>
+               </div>
+                <div class="span4">
+                    <h2>Networking</h2>
+                    <p>{{name}} is a great place to meet new interesting and wicked smart folks.  Be ready to be impressed.</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="block" id="section-1">
+                <h2 class="page-header">
+                    About Us
+                </h2>
+                <p id="aboutChapter"></p>
+                <p>
+                   We are a volunteer run group.  We could not do this without support from our sponsors, but especially from awesome folks in the local tech comminity from graciously donating their time and energy to making this a great place be.
+                </p>
+            </div> <!-- end block -->
+
+  </template>
+  <script>
+    Polymer('chapter-about', {
+      apiKey : parent.config.apiKey,
+			tagline: '',
+			name : '',
+			chapterId : parent.config.chapterId,
+			gplusLoaded: function(){
+			  this.chapter = this.$.ajax.response;
+			  this.name = this.chapter.displayName;
+			  this.tagline = this.chapter.tagline;
+			  this.about = this.chapter.aboutMe;
+			  this.injectBoundHTML(this.about, this.$.aboutChapter)
+			}
+
+		});
+  </script>
+</polymer-element>
