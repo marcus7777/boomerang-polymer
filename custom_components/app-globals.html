@@ -3,8 +3,15 @@
   (function() {
     var values = {};
 
+    var chapterid = '105771089293763738926';
+
+    values.chapterid="105771089293763738926";
+
+    values.baseGDGXurl = "http://hub.gdgx.io/api/v1/";
+
     Polymer({
        ready: function() {
+         this.chapterid = chapterid;
          this.values = values;
          for (var i = 0; i < this.attributes.length; ++i) {
            var attr = this.attributes[i];
