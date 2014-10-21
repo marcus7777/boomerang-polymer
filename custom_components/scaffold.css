@@ -110,6 +110,14 @@ polyfill-next-selector { content: '#drawerPanel:not([narrow]) .menuButton';}
   display: none;
 }
 
+polyfill-next-selector { content: '.plusbutton';}
+::content .plusbutton {
+  position: absolute;
+  right: -27px;
+  z-index: 1;
+  bottom: -28px;
+}
+
 .element-label {
   height: 80px;
   line-height: 80px;

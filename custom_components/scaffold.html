@@ -50,6 +50,28 @@ of the scaffold.
 <link rel="import" href="../components/paper-item/paper-item.html">
 
 
+ <style>
+
+      body {
+        font-family: RobotoDraft, sans-serif;
+        color: #333;
+        margin: 0;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-touch-callout: none;
+      }
+    #expIcon, .plusbutton {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+    }
+
+
+    </style>
+
 
 <polymer-element name="sampler-scaffold" attributes="label responsiveWidth chapterid">
 <template>
@@ -67,7 +89,7 @@ of the scaffold.
         <div hidden?="{{!narrow}}">{{item.label}}</div>
 
         <content select=".sourceButton" >
-          <core-icon-button class="sourceButton fallback" icon="add-circle"></core-icon-button>
+          <core-icon-button class="sourceButton fallback" icon="unfold-more" on-tap="{{viewSourceAction}}" style="-ms-transform: rotate(90deg);-webkit-transform: rotate(90deg); transform: rotate(90deg);"></core-icon-button>
         </content>
 
       </core-toolbar>
@@ -86,10 +108,17 @@ of the scaffold.
     <core-header-panel drawer>
 
       <core-toolbar class="{{ {'medium-tall' : !narrow} | tokenList }}">
-        <div class="bottom main-label fit">{{label}}</div>
+        <div class="bottom main-label fit">
+          {{label}}
+        </div>
+        <content select=".plusbutton" hidden?="{{narrow}}">
+          <paper-fab id="expIcon" class="plusbutton bottom" icon="google-plus" onclick="window.open('https://plus.google.com/{{$.globals.values.chapterid}}', '_blank');"></paper-fab>
+        </div>
       </core-toolbar>
 
       <core-menu id="menu" on-core-select="{{menuSelect}}">
+
+
         <content></content>
       </core-menu>
 
