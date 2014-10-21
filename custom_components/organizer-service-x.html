@@ -37,15 +37,13 @@ a<link rel="import" href="../custom_components/app-globals.html">
       var jsonp = this.$.jsonp;
       jsonp.addEventListener("polymer-response",
         function(e) {
+          this.organizers = e.detail.response.organizers;
           // alert(e);
-          document.querySelector('template').model = {
-            stockquote: e.detail.response[0]
-          };
+          // document.querySelector('template').model = {
+          //   stockquote: e.detail.response[0]
+          //};
         }
       );
-    },
-    response: function(e){
-      alert('in polymer-response');
     },
     organizersLoaded: function() {
       // Make a copy of the loaded data

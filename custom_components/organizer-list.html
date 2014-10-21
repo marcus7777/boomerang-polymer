@@ -19,7 +19,7 @@
 
     <div horizontal  layout wrap>
       <template repeat="{{organizer in organizers}}">
-        <organizer-card gplusid="{{organizer.gplusid}}" apiKey={{apiKey}}>
+        <organizer-card gplusid="{{organizer}}" apiKey="{{apiKey}}">
           <h2>{{organizer.username}}</h2>
           <p>{{organizer.text}}</p>
         </organizer-card>
@@ -29,7 +29,7 @@
 
   <script>
   Polymer({
-    apiKey : parent.config.apiKey
+//    apiKey : parent.config.apiKey
   });
   </script>
 </polymer-element>
