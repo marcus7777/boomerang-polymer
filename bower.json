@@ -15,12 +15,13 @@
     "test",
     "tests"
   ],
-   "dependencies": {
+  "dependencies": {
     "polymer": "Polymer/polymer#master",
     "core-elements": "Polymer/core-elements#master",
     "paper-elements": "Polymer/paper-elements#master",
     "paper-fab": "Polymer/paper-fab#master",
     "font-roboto": "Polymer/font-roboto#master",
-    "core-icons": "Polymer/core-icons#master"
+    "core-icons": "Polymer/core-icons#master",
+    "polymer-jsonp": "Polymer/polymer-jsonp#~0.3.0"
   }
 }

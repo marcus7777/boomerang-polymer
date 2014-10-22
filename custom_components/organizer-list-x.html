@@ -1,0 +1,35 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="organizer-service-x.html">
+<link rel="import" href="organizer-card.html">
+
+<polymer-element name="organizer-list" attributes="show apiKey">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;
+    }
+    organizer-card {
+      margin: 30px;
+      width: 420px;
+    }
+    </style>
+
+    <organizer-service id="organizer-service" organizers="{{organizers}}"></organizer-service>
+
+    <div horizontal  layout wrap>
+      <template repeat="{{organizer in organizers}}">
+        <organizer-card gplusid="{{organizer.gplusid}}" apiKey={{apiKey}}>
+          <h2>{{organizer.username}}</h2>
+          <p>{{organizer.text}}</p>
+        </organizer-card>
+      </template>
+    </div>
+  </template>
+
+  <script>
+  Polymer({
+    apiKey : parent.config.apiKey
+  });
+  </script>
+</polymer-element>
